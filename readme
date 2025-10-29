@@ -1,0 +1,3 @@
+Este proyecto es para almacenes de datos, dentro de data se encuentran los datasets antes y despues de su limpieza. El archivo raw hace referencia a los datasets a cómo vienen de internet, y los processed con los data son los que ya están limpios, el main es el código con el cual nos deshacemos del ruido
+
+En src se encuentra todo el codigo para la API y ETL, el resultado de estas se carga en uploaded_files el cual ya muestra los archivos en xlsx listos para su uso
