@@ -11,16 +11,13 @@ def entrenar_modelos(df, objetivo, test_size=0.2, random_state=42):
     X = df.drop(columns=[objetivo])
     y = df[objetivo]
 
-    # Escalar variables numéricas
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X.select_dtypes(include='number'))
-
-    # Separar train/test
     X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=test_size, random_state=random_state)
 
     resultados = {}
 
-    # 1️⃣ Regresión Lineal
+    #Regresión Lineal
     rl = LinearRegression()
     rl.fit(X_train, y_train)
     y_pred_rl = rl.predict(X_test)
@@ -30,7 +27,7 @@ def entrenar_modelos(df, objetivo, test_size=0.2, random_state=42):
         "r2": r2_score(y_test, y_pred_rl)
     }
 
-    # 2️⃣ Decision Tree
+    #Decision Tree
     dt = DecisionTreeRegressor(random_state=random_state)
     dt.fit(X_train, y_train)
     y_pred_dt = dt.predict(X_test)
@@ -40,7 +37,7 @@ def entrenar_modelos(df, objetivo, test_size=0.2, random_state=42):
         "r2": r2_score(y_test, y_pred_dt)
     }
 
-    # 3️⃣ Random Forest
+    #Random Forest
     rf = RandomForestRegressor(n_estimators=100, random_state=random_state)
     rf.fit(X_train, y_train)
     y_pred_rf = rf.predict(X_test)
